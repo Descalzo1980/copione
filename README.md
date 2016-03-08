@@ -1,1 +1,2 @@
 # copione
+.idea
