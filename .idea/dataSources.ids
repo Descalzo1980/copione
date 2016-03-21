@@ -20,7 +20,13 @@
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <key id="6" parent="2" name="PRIMARY">
+      <column id="6" parent="2" name="authorname">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="authoremail">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="8" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

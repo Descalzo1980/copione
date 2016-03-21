@@ -1,11 +1,5 @@
 <?php
 
-if (isset($_GET['addcopione']))
-{
-    include 'addcopione.php';
-    exit();
-}
-
 try{
     $pdo = new PDO('mysql:host=localhost;port=33060;dbname=copione','homestead','secret');
     $pdo->setAttribute(PDO::ATTR_ERRMODE,  PDO::ERRMODE_EXCEPTION);
@@ -19,6 +13,11 @@ catch  (PDOException $e)
     exit();
 }
 
+if (isset($_GET['addcopione']))
+{
+    include 'addcopione.php';
+    exit();
+}
 if(isset($_POST['text'])) {
     try {
         $sql = 'INSERT INTO copionetext SET
@@ -37,6 +36,30 @@ if(isset($_POST['text'])) {
     header('Location: .');
     exit();
 }
+if (isset($_GET['addcopione']))
+{
+    include 'addcopione.php';
+    exit();
+}
+if(isset($_POST['text'])) {
+    try {
+        $sql = 'INSERT INTO copionetext SET
+        text = :text,
+        copionedate = CURRENT_DATE()';
+        $s = $pdo->prepare($sql);
+        $s->bindValue(':text', $_POST['text']);
+        $s->execute();
+    }
+    catch (PDOException  $e)
+    {
+        $error = 'Ошибка добавления текста ' . $e->getMessage();
+        include 'error.php';
+        exit();
+    }
+    header('Location: .');
+    exit();
+}
+
 
 try
 {
@@ -72,5 +95,6 @@ if(isset($_GET['deletecopione']))
     header('Location: .');
     exit();
 }
+
 include 'scenari.php';
 
