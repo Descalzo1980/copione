@@ -15,6 +15,9 @@
             <?php echo htmlspecialchars($copione['text'],  ENT_QUOTES,  'UTF-8');?>
             <input type="hidden" name="id" value="<?php echo $copione['id'];?>">
             <input type="submit" value="Удалить">
+               (автор <a href="mailto:<?php
+                echo htmlspecialchars($copione['email'], ENT_QUOTES,  'UTF-8');?>"><?php
+                   echo htmlspecialchars($copione['name'], ENT_QUOTES,  'UTF-8');?></a>)
         </h3>
     </form>
 <?php endforeach;?>

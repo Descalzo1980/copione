@@ -9,24 +9,36 @@
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
       <schema id="1" name="copione"/>
       <table id="2" parent="1" name="copionetext"/>
-      <column id="3" parent="2" name="id">
+      <table id="3" parent="1" name="author"/>
+      <column id="4" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="4" parent="2" name="text">
+      <column id="5" parent="2" name="text">
         <data-type>text</data-type>
       </column>
-      <column id="5" parent="2" name="copionedate">
+      <column id="6" parent="2" name="copionedate">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="6" parent="2" name="authorname">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="7" parent="2" name="authoremail">
-        <data-type>varchar(255)</data-type>
+      <column id="7" parent="2" name="authorid">
+        <data-type>int(11)</data-type>
       </column>
       <key id="8" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="9" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="10" parent="3" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="11" parent="3" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="12" parent="3" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

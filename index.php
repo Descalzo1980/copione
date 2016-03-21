@@ -63,7 +63,8 @@ if(isset($_POST['text'])) {
 
 try
 {
-    $sql  =  'SELECT id, text FROM copionetext';
+    $sql  =  'SELECT copionetext.id, text, name, email FROM copionetext
+              copionetext INNER JOIN author ON authorid = author.id';
     $result = $pdo->query($sql);
 }
 catch  (PDOException  $e)
@@ -74,7 +75,12 @@ catch  (PDOException  $e)
 }
 while  ($row = $result->fetch())
 {
-    $scenari[]  =  ['id'  =>  $row['id'],  'text'  => $row['text']];
+    $scenari[]  = [
+        'id'  =>  $row['id'],
+        'text'  => $row['text'],
+        'name' => $row['name'],
+        'email' => $row['email']
+    ];
 }
 
 if(isset($_GET['deletecopione']))
